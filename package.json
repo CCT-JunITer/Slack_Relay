@@ -1,0 +1,25 @@
+{
+  "name": "slack_relay",
+  "version": "1.0.0",
+  "description": "This is a relay bot in order to message groups which are not public.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CCT-JunITer/Slack_Relay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CCT-JunITer/Slack_Relay/issues"
+  },
+  "homepage": "https://github.com/CCT-JunITer/Slack_Relay#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  }
+}

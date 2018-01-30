@@ -1,24 +1,15 @@
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
-
-//define webhook adresses for different endpoints -> put webhook addresses here!
-const addresses = {
-  'juniter': "" //addresses here
-  , 'vorstand': '',
-  'hr': '',
-  'rl-runde': ''
-}
-
-//Apps credentials. DONT PUBLISH!
-var clientId = //redacted
-var clientSecret = //redacted
+var secrets = require('../slack_relay_secrets');
 
 var app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-// Incoming Port
-const PORT=4390;
+// settings for this instance
+const PORT = 4390;
+var clientId = process.env.CLIENT_ID || secrets.clientId;
+var clientSecret = process.env.CLIENT_SECRET || secrets.clientSecret;
 
 // Starts server
 app.listen(PORT, function () {
@@ -116,7 +107,7 @@ function sendAcknowledgement(res,req,dest) {
 
 // setting up Post request for relaying message
 function sendMessageToSlack(channel, JSONmessage){
-  const responseURL = addresses[channel]
+  const responseURL = secrets.addresses[channel]
   var postOptions = {
       uri: responseURL,
       method: 'POST',
