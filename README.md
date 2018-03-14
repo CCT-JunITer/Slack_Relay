@@ -1,6 +1,6 @@
 # Slack Relay
 
-One Paragraph of project description goes here
+This is a very simple server designed to relay slack messages between closed (private) channels or even different workgroups. A possible example of application is making an certain subgroup (eg Server Maintenance) aware of something in their private chat without being part of it or needing a dedicated public channel for this sort of thing.
 
 ## Getting Started
 
@@ -8,81 +8,53 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+The server requires node to run as well as 'express', 'request' and 'body-parser'.
+Install them via npm (node package manager).
+
+example:
+```
+npm install express
+```
+You need to define a slack Webhook into every group that shall be linked and note down its URL.
+
+It is then necessary to define the addresses of the Slack Webhooks to in a file called slack_relay_secrets.json in the same directory.
+
+define them like so:
 
 ```
-Give examples
+ "addresses" : {
+        "<relay-descriptor>" : "<webhook-url>",
+        "<relay-descriptor>" : "<webhook-url>",
+        ...
+    }
+```
+
+client_id and client_secret do not need to be defined.
+
+You also need to create an App for your Slack Workgroup (in SlackApi) that has a Slash-Command for every link containing the url of the server as follows:
+
+
+```
+      http://<url and port of server>/<relay-descriptor>"
 ```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+Start the server in its directory with node (and in some cases possibly sudo)
 
 ```
-Give the example
+node server.js 
 ```
+The server should now run (by default on Port 4390)
 
-And repeat
+You can now keep it running in the bash or better a screen or even better as a system service.
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Maximilian Eissler** - *Initial work* - [Github Page](https://github.com/mx-e)
+* **Tim Korjakow** - *some material improvements* - [Github Page](https://github.com/wittenator)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
 
