@@ -1,13 +1,13 @@
 var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
-var secrets = require('../slack_relay_secrets');
+var secrets = require('./slack_relay_secrets');
 
 var app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // settings for this instance
-const PORT = 4390;
+const PORT = 4000;
 var clientId = process.env.CLIENT_ID || secrets.clientId;
 var clientSecret = process.env.CLIENT_SECRET || secrets.clientSecret;
 

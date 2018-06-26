@@ -1,0 +1,4 @@
+slack_relay:
+    build: ./
+    ports:
+      - "4000:4000"
