@@ -1,4 +1,6 @@
-slack_relay:
+version: "3"
+services:
+  slackrelay:
     build: ./
     ports:
-      - "4000:4000"
+      - "127.0.0.1:4321:4321"

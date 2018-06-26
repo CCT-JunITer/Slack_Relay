@@ -7,7 +7,7 @@ var app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // settings for this instance
-const PORT = 4000;
+const PORT = 4321;
 var clientId = process.env.CLIENT_ID || secrets.clientId;
 var clientSecret = process.env.CLIENT_SECRET || secrets.clientSecret;
 
